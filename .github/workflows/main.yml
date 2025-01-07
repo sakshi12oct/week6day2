@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -25,5 +25,5 @@ jobs:
 
     - name: Run tests
       run: |
-        cd code
+        
         python -m pytest addition.py
