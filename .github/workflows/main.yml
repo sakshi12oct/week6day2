@@ -24,9 +24,7 @@ jobs:
         pip install pytest
 
     - name: Run tests
-      run: |
-        cd code
-        python -m pytest addition.py
+      run: python -m pytest addition.py
 
     - name: Create Artifact
       run: |
