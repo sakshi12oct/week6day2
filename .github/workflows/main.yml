@@ -26,3 +26,20 @@ jobs:
 
     - name: Run tests
       run: python -m pytest addition.py
+      
+    - name: Create Artifact
+      run: |
+        mkdir -p artifact
+        # Copy the 'addition.py' file and other necessary files into the artifact directory
+        #cp code/addition.py artifact/  # Copy 'addition.py' file
+        cp -r addition.py artifact/
+        
+        echo "Packaged Python code for artifact publishing."
+        ls -al artifact  # List the contents of the artifact directory to verify
+        
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: python-code-artifact
+        path: artifact/
+
