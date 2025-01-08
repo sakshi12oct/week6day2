@@ -73,6 +73,13 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ~/.ssh/my-key.pem
           chmod 600 ~/.ssh/my-key.pem  # Set appropriate permissions for the private key
+          
+      - name: Ensure SSH connectivity
+        run: |
+         ssh -t -i ~/.ssh/my-key.pem ubuntu@172.31.37.41 << 'EOF'
+          echo "Connected successfully."
+         EOF
+
 
       - name: Ensure target directory exists on EC2
         run: |
